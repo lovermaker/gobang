@@ -1,0 +1,57 @@
+.chessman, .step {
+  position: absolute;
+  text-align: center;
+  border-radius: 50%;
+  user-select: none;
+}
+
+.chessman {
+  top: 0;
+  bottom: 0;
+  background-color: black;
+
+  &.white {
+    background-color: white;
+  }
+}
+
+.step {
+  color: white;
+  &.white {
+    color: black;
+  }
+}
+
+.lastStep {
+  box-shadow: 0 0 0 .4rem rgba(255, 0, 0, 0.4);
+  animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.8);
+  }
+  70% {
+    box-shadow: 0 0 0 .6rem rgba(255, 0, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+  }
+}
+
+.fives {
+  animation: flash .8s infinite;
+  box-shadow: none;
+}
+
+@keyframes flash {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
