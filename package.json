@@ -2,6 +2,7 @@
   "name": "go-bang",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://lovermaker.github.io/gobang/",
   "dependencies": {
     "@types/jest": "24.0.15",
     "@types/node": "12.6.8",
