@@ -1,29 +1,32 @@
-import GameContext from "../GameContext";
-import ChessType from "../ChessType";
+import ActionContext from "../game/ActionContext";
+import ChessType from "../game/chess/ChessType";
+import IPlayer from "./IPlayer";
+import Chess from "../game/chess/Chess";
+import Position from "../game/chess/Position";
 
-class Player {
-    context!: GameContext
+abstract class Player implements IPlayer {
+    context!: ActionContext
     type!: ChessType
-    isComputer: boolean
-    constructor(isComputer: boolean) {
-        this.isComputer = isComputer
-    }
-    setContext(context: GameContext) {
+    setContext(context: ActionContext) {
         this.context = context
     }
     setType(type: ChessType) {
         this.type = type
     }
-    setChess(row: number, col: number) {
-        if (this.context && this.type) {
-            return this.context.setChess(this.type, row, col)
+    setChess(position: Position): boolean {
+        if (this.context && this.getType()) {
+            return this.context.setChess(new Chess(this.getType(), position))
         }
         return false
     }
 
-    undo() {
-        return this.context.undo(this.type)
+    dropChess(position: Position): boolean {
+        if (this.context && this.getType()) {
+            return this.context.dropChess(new Chess(this.getType(), position))
+        }
+        return false;
     }
+    abstract getType(): ChessType;
 }
 
 export default Player

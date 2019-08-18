@@ -1,5 +1,5 @@
 import React from 'react'
-import ChessType from "../engine/ChessType";
+import ChessType from "../engine/game/chess/ChessType";
 import './Chessman.less'
 
 interface IProps {
